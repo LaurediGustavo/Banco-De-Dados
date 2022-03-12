@@ -27,7 +27,7 @@ SELECT *FROM employees e
 	WHERE e.officeCode = (SELECT o.officeCode FROM offices o
     WHERE o.city LIKE 'Boston');
     
-# 7° - Funcionários que venderam o produto de código x
+# 7° - comprador que comprou o produto de código x
 SELECT * FROM customers c
 	WHERE c.customerNumber IN (SELECT o.customerNumber FROM orders o
 	WHERE o.orderNumber IN (SELECT od.orderNumber FROM orderdetails od
@@ -37,12 +37,12 @@ SELECT * FROM customers c
 SELECT * FROM products p
 	WHERE p.buyPrice BETWEEN 10 AND 100;
 
-# 9° - Produtos com mais de 30 compras
+# 9° - Produtos comprados com uma quantidade maior que 30
 SELECT *FROM products p
 	WHERE p.productCode IN (SELECT o.productCode FROM orderdetails o
     WHERE o.quantityOrdered > 30);
     
-# 10° - Compras maiores que 100
+# 10° - Compras maiores que 100 no total
 SELECT *FROM products p
 	WHERE p.productCode IN (SELECT o.productCode FROM orderdetails o
     WHERE o.priceEach > 100);
@@ -102,7 +102,7 @@ SELECT c.city, COUNT(ol.productCode) FROM customers c
 SELECT e.firstName, e.lastName, o.requiredDate, COUNT(e.employeeNumber) FROM classicmodels.employees e
 	INNER JOIN classicmodels.customers c ON c.salesRepEmployeeNumber = e.employeeNumber
     INNER JOIN classicmodels.orders o ON o.customerNumber = c.customerNumber
-    WHERE month(o.requiredDate) = 5
+    WHERE month(o.requiredDate) = 5 AND year(o.requiredDate) = 2004
     GROUP BY e.employeeNumber
     ORDER BY COUNT(e.employeeNumber) DESC;
     
