@@ -23,3 +23,21 @@ INSERT INTO orders (customer_id, item, price)
 INSERT INTO orders (customer_id, item, price)
     VALUES (1, "TARDIS", 1000000.00);
     
+## Dado as tabelas abaixo como eu poderia efetuar a consulta dos clientes (customers) que não efetuaram pedidos (orders) utilizando o LEFT JOIN?
+
+SELECT * FROM customers c
+	LEFT JOIN orders o ON c.id = o.customer_id
+    WHERE customer_id IS NULL;
+
+
+
+
+
+
+
+
+
+
+
+
+    
