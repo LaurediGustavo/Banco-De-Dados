@@ -149,6 +149,9 @@ SELECT *FROM classicmodels.customers c
 		INNER JOIN classicmodels.offices o
 		ON o.officeCode = e.officeCode
 			WHERE c.city = o.city
+
+#Link do vídeo com a explicação
+#https://youtu.be/QZ3oODl2qAg
         
     
 
