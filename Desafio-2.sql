@@ -28,6 +28,18 @@ INSERT INTO exercise_logs(type, minutes, calories, heart_rate) VALUES ("caminhad
 ## caso contrário retornará "Abaixo do objetivo" 
 ## Para esse desafio utilize o comando CASE.
 
+SET @IDADE = 20;
+
+SELECT *, 
+	CASE
+		WHEN e.heart_rate > (220 - @IDADE) THEN 'Acima do máximo'
+        WHEN e.heart_rate > (220 - @IDADE) * 0.9 THEN 'Acima do objetivo'
+        WHEN e.heart_rate > (220 - @IDADE) * 0.5 THEN 'Dentro do objetivo'
+        ELSE 'Abaixo do objetivo'
+	END
+    AS 'hr_zone'
+FROM exercise_logs e
+
 
 
 
